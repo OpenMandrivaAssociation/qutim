@@ -1,3 +1,5 @@
+%define _disable_ld_as_needed 1
+
 %define name qutim
 %define release %mkrel 1
 
@@ -187,10 +189,10 @@ Metapackage for qutIM + Jabber & ICQ plugins.
 %prep
 %setup -q
 %patch0 -p0
-cd plugins
+pushd plugins
 tar xvjf %SOURCE8
 tar xvjf %SOURCE7
-cd ..
+popd
 %patch1 -p0
 
 tar xvjf %SOURCE1
@@ -201,61 +203,75 @@ tar xvjf %SOURCE3
 %cmake_qt4 -DCMAKE_SKIP_RPATH=TRUE
 %make
 
-cd ../plugins/icq
+pushd ../plugins/icq
 %qmake_qt4
 %make
+popd
 
-cd ../jabber
+pushd ../plugins/jabber
 %cmake_qt4 -DGNUTLS=1
 %make
+popd
 
-cd ../../irc
+pushd ../plugins/irc
 %qmake_qt4
 %make
+popd
 
-cd ../kde-integration
+pushd ../plugins/kde-integration
 %cmake_kde4
 %make
+popd
 
-cd ../mrim
+pushd ../plugins/mrim
 %cmake_qt4
 %make
+popd
 
-cd ../../msn
+pushd ../plugins/msn
 %cmake_qt4
 %make
+popd
 
-cd ../../vkontakte
+pushd ../plugins/vkontakte
 %qmake_qt4
 %make
+popd
 
-cd ../imagepub
+pushd ../plugins/imagepub
 %qmake_qt4
 %make
+popd
 
-cd ../urlpreview
+pushd ../plugins/urlpreview
 %qmake_qt4
 %make
+popd
 
-cd ../yandexnarod
+pushd ../plugins/yandexnarod
 %qmake_qt4
 %make
+popd
 
-cd ../connectioncheck
+pushd ../plugins/connectioncheck
 %qmake_qt4
 %make
+popd
 
-cd ../histman
+pushd ../plugins/histman
 %qmake_qt4
 %make
+popd
 
-cd ../twitter
+pushd ../plugins/twitter
 %qmake_qt4
 %make
+popd
 
-cd ../plugman
+pushd ../plugins/plugman
 %cmake_qt4
 %make
+popd
 
 %install
 rm -rf %buildroot
