@@ -261,13 +261,13 @@ popd
 rm -rf %buildroot
 %__install -D -m 0644 "icons/qutim_64.png" "%{buildroot}%{_datadir}/pixmaps/%{name}.png"
 %__install -d "%{buildroot}%{_bindir}"
-%__install -d "%{buildroot}%{_desktopdir}"
+%__install -d "%{buildroot}%{_datadir}"/applications/
 %__install -d "%{buildroot}%{_libdir}/%{name}"
 %__install -d "%{buildroot}%{_datadir}/%{name}/languages/ru"
 %__install -d "%{buildroot}%{_datadir}/%{name}/webkitstyle"
 
 cp "build/%{name}" "%{buildroot}%{_bindir}/%{name}"
-cp %SOURCE4 "%{buildroot}%{_desktopdir}/%{name}.desktop"
+cp %SOURCE4 "%{buildroot}%{_datadir}/applications/%{name}.desktop"
 cp "plugins/icq/libicq.so" "%{buildroot}%{_libdir}/%{name}/libicq.so"
 cp "plugins/jabber/build/libjabber.so" "%{buildroot}%{_libdir}/%{name}/libjabber.so"
 cp "plugins/irc/libirc.so" "%{buildroot}%{_libdir}/%{name}/libirc.so"
@@ -296,7 +296,7 @@ rm -rf %buildroot
 %files
 %defattr(-,root,root)
 %{_bindir}/%{name}
-%{_desktopdir}/%{name}.desktop
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/%{name}
 
