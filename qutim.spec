@@ -33,7 +33,6 @@ Source3:	qutim-sounds-0.2.0.tar.bz2
 Source4:	qutIM.desktop
 Source5:	TributeToQIP.tar.bz2
 Source6:	qutim-glass.tar.bz2
-Source7:	connectioncheck-%cchkversion.tar.bz2
 Source8:	additional_plugins.tar.bz2
 Patch0:		%{name}-0.2.0-x86_64.patch
 Patch1:		qutim-msn-3-cmake.patch
@@ -128,15 +127,6 @@ Requires: 	%{name} = %{coreversion}
 %description -n %{name}-yandexnarod
 Yandex.narod.ru plugin for qutIM. Requires narod.ru account.
 
-%package -n %{name}-connectioncheck
-Summary: 	Connection check plugin for qutIM
-Group:		Networking/Instant messaging
-Version: 	%{cchkversion}
-Requires: 	%{name} = %{coreversion}
-
-%description -n %{name}-connectioncheck
-Connection check plugin for qutIM.
-
 %package -n %{name}-twitter
 Summary: 	Twitter plugin for qutIM
 Group:      	Networking/Instant messaging
@@ -191,7 +181,6 @@ Metapackage for qutIM + Jabber & ICQ plugins.
 %patch0 -p0
 pushd plugins
 tar xvjf %SOURCE8
-tar xvjf %SOURCE7
 popd
 %patch1 -p0
 
@@ -253,11 +242,6 @@ pushd ../plugins/yandexnarod
 %make
 popd
 
-pushd ../plugins/connectioncheck
-%qmake_qt4
-%make
-popd
-
 pushd ../plugins/histman
 %qmake_qt4
 %make
@@ -293,7 +277,6 @@ cp "plugins/vkontakte/libvkontakte.so" "%{buildroot}%{_libdir}/%{name}/libvkonta
 cp "plugins/imagepub/libimagepub.so" "%{buildroot}%{_libdir}/%{name}/libimagepub.so"
 cp "plugins/urlpreview/liburlpreview.so" "%{buildroot}%{_libdir}/%{name}/liburlpreview.so"
 cp "plugins/yandexnarod/libyandexnarod.so" "%{buildroot}%{_libdir}/%{name}/libyandexnarod.so"
-cp "plugins/connectioncheck/libconnectioncheck.so" "%{buildroot}%{_libdir}/%{name}/libconnectioncheck.so"
 cp "plugins/histman/libhistman.so" "%{buildroot}%{_libdir}/%{name}/libhistman.so"
 cp "plugins/twitter/libtwitter.so" "%{buildroot}%{_libdir}/%{name}/libtwitter.so"
 cp "plugins/plugman/build/libplugman.so" "%{buildroot}%{_libdir}/%{name}/libplugman.so"
@@ -352,10 +335,6 @@ rm -rf %buildroot
 %files -n %{name}-yandexnarod
 %defattr(-,root,root)
 %{_libdir}/%{name}/libyandexnarod.so
-
-%files -n %{name}-connectioncheck
-%defattr(-,root,root)
-%{_libdir}/%{name}/libconnectioncheck.so
 
 %files -n %{name}-twitter
 %defattr(-,root,root)
