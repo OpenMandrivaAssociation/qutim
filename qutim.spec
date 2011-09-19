@@ -3,14 +3,17 @@
 %define name qutim
 %define release %mkrel 1
 
-%define coreversion		0.2.0.529
-%define icqversion		0.2.0.136
+%define coreversion		0.2.1.git.630
+%define icqversion		0.2.1.136
 %define ircversion		0.2.0.38
-%define jabberversion		0.2.0.431
-%define mrimversion		0.2.0.146
+%define jabberversion		0.2.1.431
+%define mrimversion		0.2.1.146
 %define vkontakteversion	0.2.0.40
 %define yandexnarodversion	0.2.0.21
 %define histmanversion		0.2.0.13
+%define juickversion		0.2.1.100
+%define weatherversion		0.2.1.145
+%define massmessagingversion	0.2.1.120
 %define plugmanversion		0.2.0.151
 %define imagepubversion		10
 %define kdeversion		31
@@ -19,14 +22,14 @@
 %define cchkversion		0.0.7
 %define twitterversion		4
 
-Name:           %{name}
-Version:        %{coreversion}
-Release:        %{release}
-Summary:        qutIM - multiplatform multiprotocol (ICQ, Jabber etc) instant messenger
-Group:          Networking/Instant messaging
-License:        GPLv2
-URL:            http://qutim.org/
-Source0:        %{name}-%{coreversion}.tar.bz2
+Name:		%{name}
+Version:	%{coreversion}
+Release:	%{release}
+Summary:	qutIM - multiplatform multiprotocol (ICQ, Jabber etc) instant messenger
+Group:		Networking/Instant messaging
+License:	GPLv2
+URL:		http://qutim.org/
+Source0:	%{name}-%{coreversion}.tar.bz2
 Source1:	qutim-emoticons-0.2.0.tar.bz2
 Source2:	qutim-langs-0.2.0.tar.bz2
 Source3:	qutim-sounds-0.2.0.tar.bz2
@@ -36,142 +39,173 @@ Source6:	qutim-glass.tar.bz2
 Source8:	additional_plugins.tar.bz2
 Patch0:		%{name}-0.2.0-x86_64.patch
 Patch1:		qutim-msn-3-cmake.patch
-BuildRoot:      %{_tmppath}/%{name}-%{coreversion}-%{release}-buildroot
-BuildRequires:  qt4-devel >= 4.4.0
-BuildRequires:  idn-devel
-BuildRequires:  gnutls-devel
-BuildRequires:  cmake
-BuildRequires:  phonon-devel kdelibs4-devel
+BuildRoot:	%{_tmppath}/%{name}-%{coreversion}-%{release}-buildroot
+BuildRequires:	qt4-devel >= 4.4.0
+BuildRequires:	idn-devel
+BuildRequires:	gnutls-devel
+BuildRequires:	cmake
+BuildRequires:	phonon-devel kdelibs4-devel
 
 %description
 qutIM - multiplatform multiprotocol (ICQ, Jabber) instant messenger.
 
 %package -n %{name}-icq
-Summary:  	ICQ plugin for qutIM
-Group:          Networking/Instant messaging
-Version:  	%{icqversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	ICQ plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{icqversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-icq
 ICQ plugin for qutIM.
 
 %package -n %{name}-jabber
-Summary: 	Jabber plugin for qutIM
-Group:          Networking/Instant messaging
-Version: 	%{jabberversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Jabber plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{jabberversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-jabber
 Jabber plugin for qutIM.
 
 %package -n %{name}-irc
-Summary:  	IRC plugin for qutIM
-Group:          Networking/Instant messaging
-Version:  	%{ircversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	IRC plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{ircversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-irc
 IRC plugin for qutIM.
 
 %package -n %{name}-mrim
-Summary:  	Mail.ru plugin for qutIM
-Group:          Networking/Instant messaging
-Version:  	%{mrimversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Mail.ru plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{mrimversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-mrim
 Mail.ru plugin for qutIM.
 
 %package -n %{name}-msn
-Summary: 	MSN plugin for qutIM
-Group:          Networking/Instant messaging
-Version: 	%{msnversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	MSN plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{msnversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-msn
 MSN plugin for qutIM.
 
 %package -n %{name}-vkontakte
-Summary: 	Vkontakte.ru plugin for qutIM
-Group:          Networking/Instant messaging
-Version: 	%{vkontakteversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Vkontakte.ru plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{vkontakteversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-vkontakte
 Vkontakte.ru plugin for qutIM.
 
 %package -n %{name}-imagepub
-Summary: 	Image publishing services plugin for qutIM
-Group:          Networking/Instant messaging
-Version: 	%{imagepubversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Image publishing services plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{imagepubversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-imagepub
 Image publishing services plugin for qutIM.
 
+
+%package -n %{name}-massmessaging
+Summary:	Mass messaging plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{massmessagingversion}
+Requires:	%{name} = %{coreversion}
+
+%description -n %{name}-massmessaging
+Mass messaging plugin for qutIM.
+
+
+%package -n %{name}-juick
+Summary:	Weather plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{juickversion}
+Requires:	%{name} = %{coreversion}
+
+%description -n %{name}-juick
+juick plugin for qutIM.
+
+
+%package -n %{name}-weather
+Summary:	Weather plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{weatherversion}
+Requires:	%{name} = %{coreversion}
+
+%description -n %{name}-weather
+Weather plugin for qutIM.
+
+
 %package -n %{name}-urlpreview
-Summary: 	Prewiew URLs in messages plugin for qutIM
-Group:      	Networking/Instant messaging
-Version: 	%{urlpreviewversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Prewiew URLs in messages plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{urlpreviewversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-urlpreview
 Prewiew URLs in messages plugin for qutIM.
 
 %package -n %{name}-yandexnarod
-Summary: 	Yandex.narod.ru plugin for qutIM
-Group:      	Networking/Instant messaging
-Version: 	%{yandexnarodversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Yandex.narod.ru plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{yandexnarodversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-yandexnarod
 Yandex.narod.ru plugin for qutIM. Requires narod.ru account.
 
 %package -n %{name}-twitter
-Summary: 	Twitter plugin for qutIM
-Group:      	Networking/Instant messaging
-Version: 	%{twitterversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Twitter plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{twitterversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-twitter
 Twitter plugin for qutIM.
 
 %package -n %{name}-histman
-Summary: 	History manager plugin for qutIM
-Group:      	Networking/Instant messaging
-Version: 	%{histmanversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	History manager plugin for qutIM
+Group:		Networking/Instant messaging
+Version:	%{histmanversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-histman
 History manager plugin for qutIM. Import history from clients
 like QIP, Miranda, Pidgin, Kopete, Gajim, Psi and others.
 
 %package -n %{name}-plugman
-Summary: 	Plugin manager for qutIM
-Group:      	Networking/Instant messaging
-Version: 	%{plugmanversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	Plugin manager for qutIM
+Group:		Networking/Instant messaging
+Version:	%{plugmanversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-plugman
 Plugin manager for qutIM. Allow install additional themes,
 icon packs and other useful staff.
 
 %package -n %{name}-kde-integration
-Summary: 	KDE integration plugin set for qutIM
-Group:          Networking/Instant messaging
-Version: 	%{kdeversion}
-Requires: 	%{name} = %{coreversion}
+Summary:	KDE integration plugin set for qutIM
+Group:		Networking/Instant messaging
+Version:	%{kdeversion}
+Requires:	%{name} = %{coreversion}
 
 %description -n %{name}-kde-integration
 KDE integration plugin set for qutIM.
 
 %package -n task-%{name}
-Summary: 	Task for qutIM with Jabber & ICQ plugins
-Group:          Networking/Instant messaging
-Version: 	%{coreversion}
-Requires: 	%{name} = %{coreversion}
-Requires: 	%{name}-icq = %{icqversion}
-Requires: 	%{name}-jabber = %{jabberversion}
+Summary:	Task for qutIM with Jabber & ICQ plugins
+Group:		Networking/Instant messaging
+Version:	%{coreversion}
+Requires:	%{name} = %{coreversion}
+Requires:	%{name}-icq = %{icqversion}
+Requires:	%{name}-jabber = %{jabberversion}
 
 %description -n task-%{name}
 Metapackage for qutIM + Jabber & ICQ plugins.
@@ -232,6 +266,22 @@ pushd ../plugins/imagepub
 %make
 popd
 
+
+pushd ../plugins/massmessaging
+%qmake_qt4
+%make
+popd
+
+pushd ../plugins/weather
+%qmake_qt4
+%make
+popd
+
+pushd ../plugins/juick
+%qmake_qt4
+%make
+popd
+
 pushd ../plugins/urlpreview
 %qmake_qt4
 %make
@@ -268,13 +318,16 @@ rm -rf %buildroot
 
 cp "build/%{name}" "%{buildroot}%{_bindir}/%{name}"
 cp %SOURCE4 "%{buildroot}%{_datadir}/applications/%{name}.desktop"
-cp "plugins/icq/libicq.so" "%{buildroot}%{_libdir}/%{name}/libicq.so"
+cp "plugins/icq/liboscar.so" "%{buildroot}%{_libdir}/%{name}/liboscar.so"
 cp "plugins/jabber/build/libjabber.so" "%{buildroot}%{_libdir}/%{name}/libjabber.so"
 cp "plugins/irc/libirc.so" "%{buildroot}%{_libdir}/%{name}/libirc.so"
 cp "plugins/mrim/build/libmrim.so" "%{buildroot}%{_libdir}/%{name}/libmrim.so"
 cp "plugins/msn/build/libmsn.so" "%{buildroot}%{_libdir}/%{name}/libmsn.so"
 cp "plugins/vkontakte/libvkontakte.so" "%{buildroot}%{_libdir}/%{name}/libvkontakte.so"
 cp "plugins/imagepub/libimagepub.so" "%{buildroot}%{_libdir}/%{name}/libimagepub.so"
+cp "plugins/massmessaging/libmassmessaging.so" "%{buildroot}%{_libdir}/%{name}/libmassmessaging.so"
+cp "plugins/juick/libjuick.so" "%{buildroot}%{_libdir}/%{name}/libjuick.so"
+cp "plugins/weather/libweather.so" "%{buildroot}%{_libdir}/%{name}/libweather.so"
 cp "plugins/urlpreview/liburlpreview.so" "%{buildroot}%{_libdir}/%{name}/liburlpreview.so"
 cp "plugins/yandexnarod/libyandexnarod.so" "%{buildroot}%{_libdir}/%{name}/libyandexnarod.so"
 cp "plugins/histman/libhistman.so" "%{buildroot}%{_libdir}/%{name}/libhistman.so"
@@ -302,7 +355,7 @@ rm -rf %buildroot
 
 %files -n %{name}-icq
 %defattr(-,root,root)
-%{_libdir}/%{name}/libicq.so
+%{_libdir}/%{name}/liboscar.so
 
 %files -n %{name}-irc
 %defattr(-,root,root)
@@ -319,6 +372,18 @@ rm -rf %buildroot
 %files -n %{name}-msn
 %defattr(-,root,root)
 %{_libdir}/%{name}/libmsn.so
+
+%files -n %{name}-weather
+%defattr(-,root,root)
+%{_libdir}/%{name}/libweather.so
+
+%files -n %{name}-juick
+%defattr(-,root,root)
+%{_libdir}/%{name}/libjuick.so
+
+%files -n %{name}-massmessaging
+%defattr(-,root,root)
+%{_libdir}/%{name}/libmassmessaging.so
 
 %files -n %{name}-vkontakte
 %defattr(-,root,root)
