@@ -1,0 +1,115 @@
+diff --git a/protocols/astral/CMakeLists.txt b/protocols/astral/CMakeLists.txt
+index b421c13..f8d8817 100644
+--- a/protocols/astral/CMakeLists.txt
++++ b/protocols/astral/CMakeLists.txt
+@@ -4,7 +4,7 @@ PROJECT( Astral )
+ find_package( PkgConfig )
+ 
+ if( PKGCONFIG_FOUND OR PKG_CONFIG_FOUND )
+-	pkg_check_modules( TELEPATHY TelepathyQt4>=0.3.0 )
++	pkg_check_modules( TELEPATHY TelepathyQt>=0.3.0 )
+ 	include_directories( ${TELEPATHY_INCLUDE_DIRS} )
+ else()
+ 	set( TELEPATHY_INCLUDE_DIR "" CACHE PATH "Path to telepathy-qt4 include dir" )
+@@ -15,7 +15,7 @@ endif()
+ 
+ 
+ IF (NOT TELEPATHY_FOUND)
+-	message( "TelepathyQt4 not found. Can't enter the astral" )
++	message( "TelepathyQt not found. Can't enter the astral" )
+ 	return()
+ ENDIF()
+ 
+diff --git a/protocols/astral/src/astralaccount.cpp b/protocols/astral/src/astralaccount.cpp
+index 1d51707..315dbfa 100644
+--- a/protocols/astral/src/astralaccount.cpp
++++ b/protocols/astral/src/astralaccount.cpp
+@@ -26,9 +26,9 @@
+ #include "astralprotocol.h"
+ #include "astralroster.h"
+ #include "astralsessionmanager.h"
+-#include <TelepathyQt4/Account>
+-#include <TelepathyQt4/AccountManager>
+-#include <TelepathyQt4/PendingChannel>
++#include <TelepathyQt/Account>
++#include <TelepathyQt/AccountManager>
++#include <TelepathyQt/PendingChannel>
+ #include <QDebug>
+ 
+ struct AstralAccountPrivate
+diff --git a/protocols/astral/src/astralaccount.h b/protocols/astral/src/astralaccount.h
+index 2781fb9..6e4378d 100644
+--- a/protocols/astral/src/astralaccount.h
++++ b/protocols/astral/src/astralaccount.h
+@@ -26,13 +26,13 @@
+ #define ASTRALACCOUNT_H
+ 
+ #include <qutim/account.h>
+-#include <TelepathyQt4/ConnectionManager>
+-#include <TelepathyQt4/Connection>
+-#include <TelepathyQt4/TextChannel>
+-#include <TelepathyQt4/AccountManager>
+-#include <TelepathyQt4/PendingConnection>
+-#include <TelepathyQt4/PendingOperation>
+-#include <TelepathyQt4/PendingReady>
++#include <TelepathyQt/ConnectionManager>
++#include <TelepathyQt/Connection>
++#include <TelepathyQt/TextChannel>
++#include <TelepathyQt/AccountManager>
++#include <TelepathyQt/PendingConnection>
++#include <TelepathyQt/PendingOperation>
++#include <TelepathyQt/PendingReady>
+ 
+ #include "astralroster.h"
+ 
+diff --git a/protocols/astral/src/astralcontact.h b/protocols/astral/src/astralcontact.h
+index ce0e9dd..5adfb07 100644
+--- a/protocols/astral/src/astralcontact.h
++++ b/protocols/astral/src/astralcontact.h
+@@ -26,9 +26,9 @@
+ #define ASTRALCONTACT_H
+ 
+ #include <qutim/contact.h>
+-#include <TelepathyQt4/Types>
+-#include <TelepathyQt4/Contact>
+-#include <TelepathyQt4/Connection>
++#include <TelepathyQt/Types>
++#include <TelepathyQt/Contact>
++#include <TelepathyQt/Connection>
+ 
+ using namespace Tp;
+ using namespace qutim_sdk_0_3;
+diff --git a/protocols/astral/src/astralplugin.cpp b/protocols/astral/src/astralplugin.cpp
+index e907866..23c94cc 100644
+--- a/protocols/astral/src/astralplugin.cpp
++++ b/protocols/astral/src/astralplugin.cpp
+@@ -24,10 +24,10 @@
+ ****************************************************************************/
+ #include "astralplugin.h"
+ #include <QtCore/QtDebug>
+-#include <TelepathyQt4/Debug>
+-#include <TelepathyQt4/Constants>
+-#include <TelepathyQt4/Types>
+-//#include <TelepathyQt4/ConnectionInterfaceAvatarsInterface>
++#include <TelepathyQt/Debug>
++#include <TelepathyQt/Constants>
++#include <TelepathyQt/Types>
++//#include <TelepathyQt/ConnectionInterfaceAvatarsInterface>
+ 
+ AstralPlugin::AstralPlugin()
+ {
+diff --git a/protocols/astral/src/astralsession.h b/protocols/astral/src/astralsession.h
+index fa78e45..a5dd1c3 100644
+--- a/protocols/astral/src/astralsession.h
++++ b/protocols/astral/src/astralsession.h
+@@ -26,8 +26,8 @@
+ #define ASTRALSESSION_H
+ 
+ #include <qutim/chatunit.h>
+-#include <TelepathyQt4/TextChannel>
+-#include <TelepathyQt4/Message>
++#include <TelepathyQt/TextChannel>
++#include <TelepathyQt/Message>
+ 
+ using namespace qutim_sdk_0_3;
+ using namespace Tp;
