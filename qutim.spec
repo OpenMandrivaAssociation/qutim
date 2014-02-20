@@ -10,6 +10,8 @@ Url:		http://qutim.org/
 Source0:	http://qutim.org/dwnl/68/%{name}-%{version}.tar.xz
 Patch0:		telepathy-qt4-telepathyqt-upstream.patch
 BuildRequires:	cmake
+BuildRequires:	doxygen
+BuildRequires:	qt4-assistant
 BuildRequires:	qt4-linguist
 BuildRequires:	aspell-devel
 BuildRequires:	kdelibs4-devel
