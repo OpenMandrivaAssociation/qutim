@@ -6,7 +6,7 @@ Version:	0.3.2
 Release:	2
 License:	GPLv2+
 Group:		Networking/Instant messaging
-Url:		http://qutim.org/
+Url:		https://qutim.org/
 Source0:	http://qutim.org/dwnl/68/%{name}-%{version}.tar.xz
 Patch0:		telepathy-qt4-telepathyqt-upstream.patch
 BuildRequires:	cmake
